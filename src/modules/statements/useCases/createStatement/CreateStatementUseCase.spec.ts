@@ -68,7 +68,7 @@ describe("Create UserStatement", () => {
   });
 
   it("Should not be able to create a deposit for a non existing user", async () => {
-    expect(async () => {
+    await expect(async () => {
       const user_id = "Invalid User";
 
       await createStatementUseCase.execute({
@@ -81,7 +81,7 @@ describe("Create UserStatement", () => {
   });
 
   it("Should not be able to create a withdrawal for a non existing user", async () => {
-    expect(async () => {
+    await expect(async () => {
       const user_id = "Invalid User";
 
       await createStatementUseCase.execute({
@@ -94,7 +94,7 @@ describe("Create UserStatement", () => {
   });
 
   it("Should not be able to withdrawal with insufficient funds", async () => {
-    expect(async () => {
+    await expect(async () => {
       const user = await createUserUseCase.execute({
         name: "Test - Name",
         email: "Test - Email",

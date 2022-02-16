@@ -52,34 +52,34 @@ describe("Get Statement Operation", () => {
     expect(operation).toHaveProperty("user_id");
   });
 
-  // it("Should not be able to retrieve a statement by id from a non existing user", async () => {
-  //   expect(async () => {
-  //     const user = await createUserUseCase.execute({
-  //       name: "Test - Name",
-  //       email: "Test - Email",
-  //       password: "Test - Password",
-  //     });
+  it("Should not be able to retrieve a statement by id from a non existing user", async () => {
+    await expect(async () => {
+      const user = await createUserUseCase.execute({
+        name: "Test - Name",
+        email: "Test - Email",
+        password: "Test - Password",
+      });
 
-  //     const user_id = String(user.id);
+      const user_id = String(user.id);
 
-  //     const deposit = await createStatementUseCase.execute({
-  //       user_id,
-  //       type: "deposit" as OperationType,
-  //       amount: 100,
-  //       description: "Test - Deposit"
-  //     });
+      const deposit = await createStatementUseCase.execute({
+        user_id,
+        type: "deposit" as OperationType,
+        amount: 100,
+        description: "Test - Deposit"
+      });
 
-  //     const statement_id = String(deposit.id);
+      const statement_id = String(deposit.id);
 
-  //     await getStatementOperationUseCase.execute({
-  //       user_id: "Invalid User",
-  //       statement_id,
-  //     });
-  //   }).rejects.toBeInstanceOf(GetStatementOperationError.UserNotFound);
-  // });
+      await getStatementOperationUseCase.execute({
+        user_id: "Invalid User",
+        statement_id,
+      });
+    }).rejects.toBeInstanceOf(GetStatementOperationError.UserNotFound);
+  });
 
   it("Should not be able to retrieve a statement by id from a non existing statement", async () => {
-    expect(async () => {
+    await expect(async () => {
       const user = await createUserUseCase.execute({
         name: "Test - Name",
         email: "Test - Email",

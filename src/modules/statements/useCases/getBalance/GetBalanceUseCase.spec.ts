@@ -34,7 +34,7 @@ describe("Get User Balance", () => {
   });
 
   it("Should not be able to retrieve balance from a non existing user", async () => {
-    expect(async () => {
+    await expect(async () => {
       const user_id = "Test - Invalid User"
 
       await getBalanceUseCase.execute({

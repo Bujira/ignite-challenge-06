@@ -30,7 +30,7 @@ describe("Show User Profile", () => {
   });
 
   it("Should not be able to show the profile of a non existing user", async () => {
-    expect(async () => {
+    await expect(async () => {
       const user_id = "Invalid User";
 
       await showUserProfileUseCase.execute(user_id);

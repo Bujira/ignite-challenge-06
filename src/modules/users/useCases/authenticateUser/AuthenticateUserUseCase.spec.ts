@@ -30,7 +30,7 @@ describe("Authenticate User", () => {
   });
 
   it("Should not be able to authenticate a non existing user", async () => {
-    expect(async () => {
+    await expect(async () => {
       await authenticateUserUseCase.execute({
         email: "Test - No Email",
         password: "Test - No Password",
@@ -39,7 +39,7 @@ describe("Authenticate User", () => {
   });
 
   it("Should not be able to authenticate a user with invalid password", async () => {
-    expect(async () => {
+    await expect(async () => {
       await createUserUseCase.execute({
         name: "Test - Name",
         email: "Test - Email",
