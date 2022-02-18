@@ -13,7 +13,6 @@ describe("Show User Profile", () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository();
     createUserUseCase = new CreateUserUseCase(usersRepository);
-    authenticateUserUseCase = new AuthenticateUserUseCase(usersRepository);
     showUserProfileUseCase = new ShowUserProfileUseCase(usersRepository);
   });
 
